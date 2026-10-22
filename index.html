@@ -37,6 +37,9 @@
       <label class="field-label" for="fitness-url">Indirizzo app fitness</label>
       <input id="fitness-url" class="input" type="url" value="https://matteus1985.github.io/myWorkout/" autocomplete="url">
       <p class="muted small">ATLAS apre Lift Log in una scheda integrata. I dati fitness restano gestiti da myWorkout.</p>
+      <label class="field-label" for="google-client-id">Google Calendar · Client ID OAuth</label>
+      <input id="google-client-id" class="input" type="text" placeholder="123…apps.googleusercontent.com" autocomplete="off" spellcheck="false">
+      <p class="muted small">Inserisci il Client ID web creato in Google Cloud. Poi collega il calendario: ATLAS chiederà accesso in sola lettura agli eventi. Gli eventi non vengono salvati nell’archivio ATLAS.</p>
       <div class="settings-actions"><button class="button secondary" id="export-data" type="button">Esporta backup JSON</button><label class="button secondary file-button">Importa backup<input id="import-data" type="file" accept="application/json"></label></div>
       <div class="settings-actions"><button class="button danger-outline" id="clear-data" type="button">Cancella dati ATLAS</button></div>
       <p class="muted tiny">Backup consigliato prima di cancellare i dati del browser o cambiare dispositivo. L’importazione unisce i dati per ID.</p>
