@@ -1,5 +1,6 @@
 (()=>{'use strict';
 const DB_NAME='atlas-local',DB_VERSION=1,STORE='records';
+const modules=[['home','⌂','Home'],['agenda','▦','Agenda'],['fitness','↗','Fitness'],['wealth','◈','Wealth'],['properties','⌂','Casa'],['nutrition','◉','Nutrition'],['travel','✈','Travel'],['garage','▰','Garage']];
 const $=s=>document.querySelector(s),id=()=>crypto.randomUUID(),today=()=>localDate(new Date()),localDate=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,fmtDate=d=>new Date(`${d}T12:00:00`).toLocaleDateString('it-CH',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 let db,memoryRecords=[],active='home',records=[],selectedDate=today(),settings={fitnessUrl:'https://matteus1985.github.io/myWorkout/',googleClientId:''},calendarToken=null,tokenClient=null,googleScriptPromise=null,eventsForDay=[],calendarError='';
 
