@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="ATLAS — il tuo spazio personale, privato e disponibile offline.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>ATLAS — spazio personale</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigazione principale">
+      <a class="brand" href="#home" aria-label="ATLAS Home"><span class="brand-mark">A</span><span>ATLAS</span></a>
+      <div class="side-label">SPAZIO PERSONALE</div>
+      <nav id="side-nav"></nav>
+      <div class="sidebar-bottom"><span class="privacy-dot"></span><span>Solo su questo dispositivo</span></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">A</span><span>ATLAS</span></div>
+        <div class="crumb" id="crumb">IL TUO SPAZIO · OGGI</div>
+        <button class="icon-button" id="settings-open" aria-label="Apri impostazioni">⚙</button>
+      </header>
+      <section id="view" class="view" aria-live="polite"></section>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Navigazione mobile"></nav>
+      <footer class="footnote"><span class="privacy-dot"></span> I tuoi dati restano in questo browser <span id="storage-state">· archivio locale pronto</span></footer>
+    </main>
+  </div>
+
+  <dialog id="settings-dialog" class="modal">
+    <form method="dialog" class="modal-head"><div><div class="eyebrow">PREFERENZE</div><h2>Impostazioni</h2></div><button class="icon-button" aria-label="Chiudi">×</button></form>
+    <div class="settings-content">
+      <label class="field-label" for="fitness-url">Indirizzo app fitness</label>
+      <input id="fitness-url" class="input" type="url" value="https://matteus1985.github.io/myWorkout/" autocomplete="url">
+      <p class="muted small">ATLAS apre Lift Log in una scheda integrata. I dati fitness restano gestiti da myWorkout.</p>
+      <div class="settings-actions"><button class="button secondary" id="export-data" type="button">Esporta backup JSON</button><label class="button secondary file-button">Importa backup<input id="import-data" type="file" accept="application/json"></label></div>
+      <div class="settings-actions"><button class="button danger-outline" id="clear-data" type="button">Cancella dati ATLAS</button></div>
+      <p class="muted tiny">Backup consigliato prima di cancellare i dati del browser o cambiare dispositivo. L’importazione unisce i dati per ID.</p>
+    </div>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

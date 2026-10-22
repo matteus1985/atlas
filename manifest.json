@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "ATLAS — Spazio personale",
+  "short_name": "ATLAS",
+  "description": "Hub personale local-first per iPhone.",
+  "lang": "it-CH",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101114",
+  "theme_color": "#101114",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
