@@ -1,8 +1,9 @@
 (()=>{'use strict';
 const DB_NAME='atlas-local',DB_VERSION=1,STORE='records';
-const modules=[['home','⌂','Home'],['agenda','▦','Agenda'],['fitness','↗','Fitness'],['wealth','◈','Wealth'],['properties','⌂','Casa'],['nutrition','◉','Nutrition'],['travel','✈','Travel'],['garage','▰','Garage']];
-let db,active='home',records=[],selectedDate=today(),settings={fitnessUrl:'https://matteus1985.github.io/myWorkout/',googleClientId:''},calendarToken=null,tokenClient=null,googleScriptPromise=null,eventsForDay=[],calendarError='';
 const $=s=>document.querySelector(s),id=()=>crypto.randomUUID(),today=()=>localDate(new Date()),localDate=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,fmtDate=d=>new Date(`${d}T12:00:00`).toLocaleDateString('it-CH',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+let db,active='home',records=[],selectedDate=today(),settings={fitnessUrl:'https://matteus1985.github.io/myWorkout/',googleClientId:''},calendarToken=null,tokenClient=null,googleScriptPromise=null,eventsForDay=[],calendarError='';
+
+      
 function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE)){const st=d.createObjectStore(STORE,{keyPath:'id'});st.createIndex('type','type');st.createIndex('date','date')}};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
 function all(){return new Promise((resolve,reject)=>{const r=db.transaction(STORE).objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
 function put(item){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).put(item);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
@@ -51,3 +52,4 @@ async function refresh(){records=await all();render()}
 async function start(){try{loadSettings();db=await openDB();records=await all();setNav();initSettings();render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});}catch{$('#storage-state').textContent='· archivio locale non disponibile';$('#view').innerHTML=empty('Archivio non disponibile','Apri ATLAS in Safari aggiornato e usa l’indirizzo HTTPS.')}}
 start();
 })();
+
